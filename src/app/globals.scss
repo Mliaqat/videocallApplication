@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+
+
+.circle-animation {
+  border-radius: 50%;
+  border: 2px solid #E346A3;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: 800px;
+  transform: scale(0.5);
+  animation: anim 4s infinite;
+  animation-direction: alternate;
+  .inner-circle {
+    border-radius: 50%;
+    border: 2px solid #E346A3;
+    width: 700px;
+    height: 700px;
+    padding: 70px;
+    transform: scale(0.5);
+    animation: inneranim 4s infinite;
+    animation-direction: alternate;
+    box-sizing: border-box;
+  }
+  .innerMost-circle {
+    background-color: #E346A3;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+  }
+  @keyframes anim {
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(2.4);
+    }
+  }
+  @keyframes inneranim {
+    50% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(0.9);
+    }
+  }
+
+  @media screen and (max-width: 885px) {
+    @keyframes inneranim {
+      50% {
+        transform: scale(0.3);
+      }
+      100% {
+        transform: scale(0.8);
+      }
+    }
+    @keyframes anim {
+      50% {
+        transform: scale(0.6);
+      }
+      100% {
+        transform: scale(1.3);
+      }
+    }
+  }
+}
+/* // animation for moving div */
+.animation-div-parent {
+  .conatiner .border {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .conatiner .border .qrcode {
+    position: relative;
+    width: 160px;
+    /* //height: 160px; */
+  }
+  .conatiner .border .qrcode::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background: #c3a4f0;
+    background-size: 380px;
+    overflow: hidden;
+    animation: animImg 2s linear infinite;
+  }
+  @keyframes animImg {
+    0%,
+    100% {
+      height: 2px;
+    }
+    50% {
+      height: calc(100% - 2px);
+    }
+  }
+  .conatiner .border .qrcode::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    width: calc(100% + 10px);
+    height: 5px;
+    box-shadow: 0px 0px 38.1868px #7c48aa;
+    background: #7c48aa;
+    border-radius: 78.6696px;
+    animation: animLine 2s linear infinite;
+  }
+  @keyframes animLine {
+    0%,
+    100% {
+      top: 1px;
+    }
+    50% {
+      top: calc(100% - 2px);
+    }
+  }
+}
